@@ -1,0 +1,22 @@
+meta {
+  name: User Update
+  type: http
+  seq: 4
+}
+
+patch {
+  url: http://localhost:3000/user/2017a1a6-5ae5-4323-a70a-31e9a75b8496
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "id": "2017a1a6-5ae5-4323-a70a-31e9a75b8496",
+    "createdAt": "2025-03-15T13:46:13.259Z",
+    "updatedAt": "2025-03-15T13:46:13.259Z",
+    "firstName": "Erwan",
+    "lastName": "Erwan",
+    "age": 34
+  }
+}
