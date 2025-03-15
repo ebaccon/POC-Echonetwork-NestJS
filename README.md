@@ -96,3 +96,30 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+
+
+
+# Configuration Connection PostgreSQL
+
+Modification du pg_hba.conf avec trust sur ces lignes : 
+
+```conf
+# "local" is for Unix domain socket connections only
+local   all             all                                     trust
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            trust
+# IPv6 local connections:
+host    all             all             ::1/128                 trust
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+local   replication     all                                     trust
+host    replication     all             127.0.0.1/32            trust
+host    replication     all             ::1/128                 trust
+```
+
+Création d'un nouvel utilisateur autre que celui superadmin obligatoire : 
+```sql
+ CREATE USER admin WITH PASSWORD 'admin';
+ ALTER ROLE admin CREATEROLE CREATEDB SUPERUSER;
+```
